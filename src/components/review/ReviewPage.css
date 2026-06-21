@@ -1,0 +1,52 @@
+.review-page { display: flex; flex-direction: column; gap: 20px; }
+.review-page__header { display: flex; justify-content: space-between; align-items: center; }
+.review-page__header h2 { font-size: 18px; font-weight: 700; }
+.review-page__count { font-size: 13px; font-weight: 600; color: var(--color-text-secondary); }
+
+.review-page__empty {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 60px 20px; text-align: center;
+}
+.review-page__empty-emoji { font-size: 64px; }
+.review-page__empty h3 { font-size: 20px; }
+.review-page__empty p { color: var(--color-text-secondary); font-size: 14px; line-height: 1.6; }
+
+.review-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.review-card__inner {
+  width: 100%; min-height: 300px; position: relative;
+  transition: transform 0.6s; transform-style: preserve-3d;
+}
+.review-card__inner--flipped { transform: rotateY(180deg); }
+.review-card__front,
+.review-card__back {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  border-radius: var(--radius-xl); background: var(--color-bg-card);
+  box-shadow: var(--shadow-card); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 30px;
+}
+.review-card__back { transform: rotateY(180deg); }
+.review-card__emoji { font-size: 64px; margin-bottom: 12px; }
+.review-card__word { font-size: 28px; font-weight: 700; }
+.review-card__speak { font-size: 24px; background: var(--color-bg); padding: 10px; border-radius: 50%; margin-top: 12px; }
+.review-card__zh { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.review-card__ex { font-size: 14px; color: var(--color-text-secondary); text-align: center; margin-bottom: 4px; }
+.review-card__ex-zh { font-size: 13px; color: var(--color-text-muted); text-align: center; }
+
+.review-card__rating {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 20px; background: var(--color-bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.review-card__rating-label { font-size: 14px; font-weight: 600; text-align: center; }
+.review-card__buttons {
+  display: flex; justify-content: space-between; gap: 6px;
+}
+.review-card__buttons button {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 8px; background: var(--color-bg); border-radius: var(--radius-md);
+  font-size: 18px; min-width: 50px;
+}
+.review-card__buttons button span { font-size: 10px; font-weight: 500; color: var(--color-text-secondary); }
