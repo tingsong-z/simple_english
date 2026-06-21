@@ -63,6 +63,8 @@ export default function ReviewPage() {
           <div className="review-card__front">
             <span className="review-card__emoji">{word.emoji}</span>
             <h3 className="review-card__word">{word.word}</h3>
+            {word.phonetic && <span className="review-card__phonetic">{word.phonetic}</span>}
+            <span className="review-card__translation-front">{word.translation}</span>
             <button className="review-card__speak" onClick={(e) => { e.stopPropagation(); speak(word.word); }}>🔊</button>
           </div>
           <div className="review-card__back">

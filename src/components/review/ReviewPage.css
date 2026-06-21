@@ -30,7 +30,9 @@
 .review-card__back { transform: rotateY(180deg); }
 .review-card__emoji { font-size: 64px; margin-bottom: 12px; }
 .review-card__word { font-size: 28px; font-weight: 700; }
-.review-card__speak { font-size: 24px; background: var(--color-bg); padding: 10px; border-radius: 50%; margin-top: 12px; }
+.review-card__phonetic { font-size: 14px; color: var(--color-text-muted); margin-top: 2px; }
+.review-card__translation-front { font-size: 15px; color: var(--color-text-secondary); margin-top: 4px; }
+.review-card__speak { font-size: 24px; background: var(--color-bg); padding: 10px; border-radius: 50%; margin-top: 8px; }
 .review-card__zh { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .review-card__ex { font-size: 14px; color: var(--color-text-secondary); text-align: center; margin-bottom: 4px; }
 .review-card__ex-zh { font-size: 13px; color: var(--color-text-muted); text-align: center; }

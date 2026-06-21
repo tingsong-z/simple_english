@@ -45,7 +45,9 @@ export default function WordListPage() {
             <div className="word-card__front">
               <span className="word-card__emoji">{word.emoji}</span>
               <h3 className="word-card__word">{word.word}</h3>
+              {word.phonetic && <span className="word-card__phonetic">{word.phonetic}</span>}
               <span className="word-card__freq">{'★'.repeat(word.frequency)}</span>
+              <span className="word-card__translation-front">{word.translation}</span>
               <button className="word-card__speak" onClick={(e) => handleSpeak(e, word.word)}>🔊</button>
             </div>
             <div className="word-card__back">

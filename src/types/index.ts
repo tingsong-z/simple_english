@@ -3,6 +3,7 @@ export interface Word {
   word: string;
   emoji: string;
   translation: string;
+  phonetic: string;
   partOfSpeech: string;
   frequency: number;
   exampleEn: string;

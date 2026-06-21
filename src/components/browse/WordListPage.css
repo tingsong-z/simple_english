@@ -72,6 +72,18 @@
   font-size: 28px;
   font-weight: 700;
   color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.word-card__phonetic {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.word-card__translation-front {
+  font-size: 16px;
+  color: var(--color-text-secondary);
   margin-bottom: 8px;
 }
 
