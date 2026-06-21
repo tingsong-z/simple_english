@@ -1,5 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthStore } from './store/useAuthStore';
 import AppLayout from './components/layout/AppLayout';
+import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
 import BrowsePage from './components/browse/BrowsePage';
 import WordListPage from './components/browse/WordListPage';
@@ -10,11 +12,24 @@ import SpellPage from './components/spell/SpellPage';
 import ReviewPage from './components/review/ReviewPage';
 import FavoritesPage from './components/favorites/FavoritesPage';
 
+function AuthGuard({ children }: { children: React.ReactNode }) {
+  const currentUser = useAuthStore((s) => s.currentUser);
+  if (!currentUser) return <Navigate to="/login" replace />;
+  return <>{children}</>;
+}
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route element={<AppLayout />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          element={
+            <AuthGuard>
+              <AppLayout />
+            </AuthGuard>
+          }
+        >
           <Route index element={<HomePage />} />
           <Route path="browse" element={<BrowsePage />} />
           <Route path="browse/:categoryId" element={<WordListPage />} />
@@ -25,7 +40,8 @@ export default function App() {
           <Route path="review" element={<ReviewPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
