@@ -53,22 +53,22 @@ export default function HomePage() {
               {todayCount}/{dailyGoal}
             </text>
             <text x="60" y="74" textAnchor="middle" fontSize="10" fill="var(--color-text-secondary)">
-              today
+              今日目标
             </text>
           </svg>
         </div>
         <div className="home__stats">
           <div className="home__stat" onClick={checkIn}>
             <span className="home__stat-value">🔥 {streak}</span>
-            <span className="home__stat-label">days</span>
+            <span className="home__stat-label">连续天数</span>
           </div>
           <div className="home__stat">
             <span className="home__stat-value">⭐ Lv.{level}</span>
-            <span className="home__stat-label">level</span>
+            <span className="home__stat-label">等级</span>
           </div>
           <div className="home__stat">
             <span className="home__stat-value">💎 {totalPoints}</span>
-            <span className="home__stat-label">points</span>
+            <span className="home__stat-label">积分</span>
           </div>
         </div>
       </div>
@@ -76,20 +76,20 @@ export default function HomePage() {
       <div className="home__quick-actions">
         <button className="quick-btn quick-btn--quiz" onClick={() => navigate('/quiz')}>
           <span className="quick-btn__icon">🎯</span>
-          <span>Quiz</span>
+          <span>测验</span>
         </button>
         <button className="quick-btn quick-btn--spell" onClick={() => navigate('/spell')}>
           <span className="quick-btn__icon">✍️</span>
-          <span>Spell</span>
+          <span>拼写</span>
         </button>
         <button className="quick-btn quick-btn--review" onClick={() => navigate('/review')}>
           <span className="quick-btn__icon">🔄</span>
-          <span>Review</span>
+          <span>复习</span>
         </button>
       </div>
 
       <section className="home__section">
-        <h3 className="home__section-title">📚 Categories</h3>
+        <h3 className="home__section-title">📚 单词分类 / Categories</h3>
         <div className="home__categories">
           {categories.map((cat) => (
             <button key={cat.id} className="home__cat-chip" onClick={() => navigate(`/browse/${cat.id}`)}>
@@ -102,7 +102,7 @@ export default function HomePage() {
       </section>
 
       <section className="home__section">
-        <h3 className="home__section-title">🏆 Achievements</h3>
+        <h3 className="home__section-title">🏆 成就徽章 / Achievements</h3>
         <div className="home__achievements">
           {achievements.map((a) => {
             const unlocked = unlockedBadges.includes(a.id);
@@ -119,7 +119,7 @@ export default function HomePage() {
       {showBadge && (
         <div className="badge-popup animate-bounceIn">
           <span className="badge-popup__emoji">{achievements.find((a) => a.id === showBadge)?.emoji}</span>
-          <span>Achievement Unlocked!</span>
+          <span>成就解锁！</span>
         </div>
       )}
     </div>

@@ -22,12 +22,12 @@ export default function QuizResultPage() {
       <div className="quiz-result__hero">
         <span className="quiz-result__emoji">{emoji}</span>
         <span className="quiz-result__score">{correct}/{total}</span>
-        <span className="quiz-result__pct">{pct}% correct</span>
-        <span className="quiz-result__xp">+{points} XP</span>
+        <span className="quiz-result__pct">{pct}% 正确率</span>
+        <span className="quiz-result__xp">+{points} 经验</span>
       </div>
       <div className="quiz-result__actions">
-        <button className="result-btn result-btn--primary" onClick={() => navigate('/quiz')}>Try Again</button>
-        <button className="result-btn" onClick={() => navigate('/')}>Back Home</button>
+        <button className="result-btn result-btn--primary" onClick={() => navigate('/quiz')}>再来一次</button>
+        <button className="result-btn" onClick={() => navigate('/')}>返回首页</button>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export default function WordListPage() {
   return (
     <div className="word-list animate-fadeIn">
       <div className="word-list__header">
-        <button className="word-list__back" onClick={() => navigate('/browse')}>← Back</button>
+        <button className="word-list__back" onClick={() => navigate('/browse')}>← 返回</button>
         <h2 className="word-list__title">{category.emoji} {category.nameZh}</h2>
         <span className="word-list__progress">{currentIndex + 1} / {words.length}</span>
       </div>
@@ -65,9 +65,9 @@ export default function WordListPage() {
       </div>
 
       <div className="word-list__nav">
-        <button disabled={currentIndex === 0} onClick={() => { setCurrentIndex((i) => i - 1); setFlipped({}); }}>← Prev</button>
-        <button className="word-list__fav-btn" onClick={() => navigate('/favorites')}>❤️ Favorites ({favorites.length})</button>
-        <button disabled={currentIndex === words.length - 1} onClick={() => { setCurrentIndex((i) => i + 1); setFlipped({}); }}>Next →</button>
+        <button disabled={currentIndex === 0} onClick={() => { setCurrentIndex((i) => i - 1); setFlipped({}); }}>← 上一个</button>
+        <button className="word-list__fav-btn" onClick={() => navigate('/favorites')}>❤️ 收藏 ({favorites.length})</button>
+        <button disabled={currentIndex === words.length - 1} onClick={() => { setCurrentIndex((i) => i + 1); setFlipped({}); }}>下一个 →</button>
       </div>
     </div>
   );

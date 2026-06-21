@@ -43,8 +43,8 @@ export default function ReviewPage() {
       <div className="review-page animate-fadeIn">
         <div className="review-page__empty">
           <span className="review-page__empty-emoji">🎉</span>
-          <h3>All caught up!</h3>
-          <p>No words to review right now. Come back tomorrow or start learning new words.</p>
+          <h3>全部完成！</h3>
+          <p>暂时没有需要复习的单词。明天再来，或者开始学习新单词。</p>
         </div>
       </div>
     );
@@ -54,7 +54,7 @@ export default function ReviewPage() {
   return (
     <div className="review-page animate-fadeIn">
       <div className="review-page__header">
-        <h2>🔄 Review</h2>
+        <h2>🔄 间隔复习 / Review</h2>
         <span className="review-page__count">{index + 1}/{queue.length}</span>
       </div>
 
@@ -75,13 +75,13 @@ export default function ReviewPage() {
 
       {flipped && (
         <div className="review-card__rating animate-slideUp">
-          <p className="review-card__rating-label">How well did you remember?</p>
+          <p className="review-card__rating-label">你记得怎么样？</p>
           <div className="review-card__buttons">
-            <button onClick={() => handleRate(0)}>😫<span>Forgot</span></button>
-            <button onClick={() => handleRate(2)}>😐<span>Hard</span></button>
-            <button onClick={() => handleRate(3)}>🙂<span>OK</span></button>
-            <button onClick={() => handleRate(4)}>😊<span>Good</span></button>
-            <button onClick={() => handleRate(5)}>🎯<span>Easy</span></button>
+            <button onClick={() => handleRate(0)}>😫<span>忘了</span></button>
+            <button onClick={() => handleRate(2)}>😐<span>困难</span></button>
+            <button onClick={() => handleRate(3)}>🙂<span>一般</span></button>
+            <button onClick={() => handleRate(4)}>😊<span>不错</span></button>
+            <button onClick={() => handleRate(5)}>🎯<span>简单</span></button>
           </div>
         </div>
       )}

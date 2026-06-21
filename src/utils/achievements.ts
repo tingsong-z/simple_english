@@ -1,16 +1,16 @@
 import { Achievement } from '../types';
 
 export const achievements: Achievement[] = [
-  { id: 'first-words', name: 'First Words', description: 'Learn 5 words', emoji: '🌱' },
-  { id: 'getting-started', name: 'Getting Started', description: 'Learn 20 words', emoji: '📚' },
-  { id: 'word-collector', name: 'Word Collector', description: 'Learn 50 words', emoji: '📝' },
-  { id: 'perfect-quiz', name: 'Perfect Score', description: 'Score 100% on a quiz', emoji: '💯' },
-  { id: 'streak-3', name: '3-Day Streak', description: '3 days in a row', emoji: '🔥' },
-  { id: 'streak-7', name: 'Week Warrior', description: '7 days in a row', emoji: '⚡' },
-  { id: 'spell-master', name: 'Spelling Master', description: 'Spell 10 words correctly in a row', emoji: '✍️' },
-  { id: 'night-owl', name: 'Night Owl', description: 'Study after 10 PM', emoji: '🦉' },
-  { id: 'review-10', name: 'Revisionist', description: 'Review 10 words in one session', emoji: '🔄' },
-  { id: 'level-5', name: 'Rising Star', description: 'Reach level 5', emoji: '⭐' },
+  { id: 'first-words', name: '初识英语', description: '学习 5 个单词', emoji: '🌱' },
+  { id: 'getting-started', name: '入门学习', description: '学习 20 个单词', emoji: '📚' },
+  { id: 'word-collector', name: '单词收藏家', description: '学习 50 个单词', emoji: '📝' },
+  { id: 'perfect-quiz', name: '满分选手', description: '一次测验全部正确', emoji: '💯' },
+  { id: 'streak-3', name: '三天打鱼', description: '连续 3 天学习', emoji: '🔥' },
+  { id: 'streak-7', name: '一周战士', description: '连续 7 天学习', emoji: '⚡' },
+  { id: 'spell-master', name: '拼写大师', description: '连续拼对 10 个单词', emoji: '✍️' },
+  { id: 'night-owl', name: '夜猫子', description: '在晚上10点后学习', emoji: '🦉' },
+  { id: 'review-10', name: '复习达人', description: '一次复习 10 个单词', emoji: '🔄' },
+  { id: 'level-5', name: '后起之秀', description: '达到等级 5', emoji: '⭐' },
 ];
 
 export function checkAchievements(state: {

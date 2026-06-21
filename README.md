@@ -1,50 +1,141 @@
-# React + TypeScript + Vite
+# Ogden 850 — 基础英语词汇学习
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+基于 Ogden 850 个基础英语单词的互动背词网站，类似百词斩的卡片翻转设计，多模式练习，间隔复习，游戏化激励。
 
-Currently, two official plugins are available:
+## 体验链接
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**https://tingsong-z.github.io/simple_english/**
 
-## Expanding the ESLint configuration
+## 功能一览
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 用户系统
 
-- Configure the top-level `parserOptions` property like this:
+多用户支持，每个用户独立管理自己的学习数据（学习进度、测验记录、收藏、积分等），数据通过 localStorage 按用户隔离存储。
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+| 功能 | 说明 |
+|---|---|
+| 登录页 | 输入用户名即可创建/切换用户，无需密码 |
+| 数据隔离 | 每个用户有自己的 localStorage 命名空间 |
+| 退出切换 | Header 点击退出按钮即可切换用户 |
+
+### 首页仪表盘
+
+| 功能 | 说明 |
+|---|---|
+| 今日进度环 | SVG 圆形进度条，目标每日 20 词 |
+| 连续签到 | 点击火焰图标签到，连续天数统计 |
+| 等级积分 | Lv. 等级和积分实时显示 |
+| 快捷入口 | 一键跳转测验、拼写、复习 |
+| 分类导航 | 5 个单词分类快速入口 |
+| 成就徽章 | 10 种徽章，满足条件自动解锁 |
+
+### 单词浏览
+
+| 功能 | 说明 |
+|---|---|
+| 5 大分类 | 操作词(100)、通用事物(400)、可图示事物(200)、通用性质(100)、反义词(50) |
+| CSS 3D 翻转 | 正面：Emoji + 英文 + 频率星级 |
+|  | 反面：中文释义 + 词性 + 英文例句 + 中文翻译 |
+| 发音朗读 | Web Speech API，点击 🔊 朗读单词 |
+| 收藏 | 点击心形图标收藏，独立页面查看 |
+| 翻页 | 上一个 / 下一个浏览 |
+
+### 选择题测验
+
+| 功能 | 说明 |
+|---|---|
+| 双向模式 | 英 → 中：看英文选中文释义 |
+|  | 中 → 英：看中文选英文单词 |
+| 题量可选 | 5 / 10 / 20 题 |
+| 分类筛选 | 可选全部或指定分类 |
+| 即时反馈 | 选中后绿色(正确) / 红色(错误)即时显示 |
+| 结果页 | 展示正确率、获得经验值 |
+
+### 拼写练习
+
+| 功能 | 说明 |
+|---|---|
+| 提示 | 显示中文释义 + Emoji + 词性 |
+| 发音 | 自动朗读单词发音 |
+| 输入判定 | 输入英文单词，即时反馈对错 |
+| 积分 | 每拼对一题得 20 经验 |
+
+### 间隔复习（SM-2 算法）
+
+| 功能 | 说明 |
+|---|---|
+| 复习队列 | 自动筛选到期或未学单词 |
+| 卡片翻转 | 点击卡片查看答案 |
+| 5 级自评 | 忘了 / 困难 / 一般 / 不错 / 简单 |
+| 智能排期 | 根据评分自动计算下次复习间隔 |
+
+### 游戏化系统
+
+| 系统 | 说明 |
+|---|---|
+| 积分 | 答题 +10 分，拼写 +20 分，复习 +5~8 分 |
+| 等级 | 按积分自动升级 |
+| 成就徽章 | 初识英语、满分选手、一周战士、拼写大师等 10 种 |
+
+### 我的收藏
+
+独立页面展示所有收藏的单词，点击心形可取消收藏。
+
+## 技术栈
+
+| 项 | 选择 |
+|---|---|
+| 前端框架 | React 18 + TypeScript |
+| 构建工具 | Vite 5 |
+| 路由 | React Router v6 (HashRouter) |
+| 状态管理 | Zustand |
+| 持久化 | localStorage (按用户隔离) |
+| 发音 | Web Speech API |
+| 部署 | GitHub Pages |
+
+## 项目结构
+
+```
+src/
+├── types/index.ts            # TypeScript 类型定义
+├── data/words.ts             # 850 单词数据
+├── store/
+│   ├── useWordStore.ts       # 单词数据查询
+│   ├── useProgressStore.ts   # 学习进度、SRS、积分（按用户存储）
+│   └── useAuthStore.ts       # 用户管理
+├── utils/
+│   ├── speech.ts             # Web Speech API 封装
+│   ├── scoring.ts            # 积分、等级、洗牌算法
+│   └── achievements.ts       # 成就徽章定义与检测
+├── components/
+│   ├── layout/               # AppLayout、Header、Navbar
+│   ├── home/                 # 首页仪表盘
+│   ├── browse/               # 分类浏览 + 单词卡片翻转
+│   ├── quiz/                 # 测验配置 → 答题 → 结果
+│   ├── spell/                # 拼写练习
+│   ├── review/               # SM-2 间隔复习
+│   ├── favorites/            # 收藏夹
+│   └── auth/                 # 登录页
+└── styles/                   # CSS 变量、动画
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 本地开发
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install      # 安装依赖
+npm run dev      # 启动开发服务器
+npm run build    # 生产构建
+npm run preview  # 预览生产构建
 ```
+
+## 数据说明
+
+单词数据集来自 Ogden 的 850 个基础英语单词（Basic English），覆盖 5 个分类，每个单词包含：
+
+- 单词 (English)
+- Emoji 图标
+- 中文翻译
+- 词性 (动词 / 名词 / 形容词 / 介词 等)
+- 使用频率 (★ ~ ★★★★★)
+- 英文例句
+- 中文例句翻译

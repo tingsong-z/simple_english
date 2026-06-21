@@ -59,21 +59,21 @@ export default function SpellPage() {
   if (state === 'config') {
     return (
       <div className="spell-page animate-fadeIn">
-        <h2 className="spell-page__title">✍️ Spell</h2>
+        <h2 className="spell-page__title">✍️ 拼写练习 / Spell</h2>
         <div className="spell-page__section">
-          <label className="spell-page__label">Questions</label>
+          <label className="spell-page__label">题目数量 / Questions</label>
           <div className="spell-page__chips">
             {[5, 10, 20].map((n) => <button key={n} className={`chip ${count === n ? 'chip--active' : ''}`} onClick={() => setCount(n)}>{n}</button>)}
           </div>
         </div>
         <div className="spell-page__section">
-          <label className="spell-page__label">Category</label>
+          <label className="spell-page__label">分类 / Category</label>
           <div className="spell-page__chips">
-            <button className={`chip ${categoryId === 'all' ? 'chip--active' : ''}`} onClick={() => setCategoryId('all')}>All</button>
+            <button className={`chip ${categoryId === 'all' ? 'chip--active' : ''}`} onClick={() => setCategoryId('all')}>全部</button>
             {categories.map((c) => <button key={c.id} className={`chip ${categoryId === c.id ? 'chip--active' : ''}`} onClick={() => setCategoryId(c.id)}>{c.nameZh}</button>)}
           </div>
         </div>
-        <button className="spell-page__start" onClick={start}>Start Spelling</button>
+        <button className="spell-page__start" onClick={start}>开始拼写</button>
       </div>
     );
   }
@@ -83,11 +83,11 @@ export default function SpellPage() {
       <div className="spell-page animate-slideUp">
         <div className="spell-page__result">
           <span className="spell-page__result-emoji">{score === words.length * 20 ? '🎉' : '🌟'}</span>
-          <span className="spell-page__result-score">{score / 20}/{words.length} correct</span>
-          <span className="spell-page__result-xp">+{score} XP</span>
+          <span className="spell-page__result-score">{score / 20}/{words.length} 正确</span>
+          <span className="spell-page__result-xp">+{score} 经验</span>
         </div>
-        <button className="spell-page__start" onClick={() => setState('config')}>Try Again</button>
-        <button className="result-btn" style={{ marginTop: 10 }} onClick={() => setState('config')}>Back to Setup</button>
+        <button className="spell-page__start" onClick={() => setState('config')}>再来一次</button>
+        <button className="result-btn" style={{ marginTop: 10 }} onClick={() => setState('config')}>返回设置</button>
       </div>
     );
   }
@@ -97,14 +97,14 @@ export default function SpellPage() {
     <div className="spell-page animate-fadeIn">
       <div className="spell-page__progress">
         <span>{current + 1}/{words.length}</span>
-        <span className="spell-page__score">Score: {score}</span>
+        <span className="spell-page__score">得分: {score}</span>
       </div>
 
       <div className={`spell-page__prompt ${feedback ? `spell-page__prompt--${feedback}` : ''}`}>
         <span className="spell-page__emoji">{word.emoji}</span>
         <span className="spell-page__zh">{word.translation}</span>
         <span className="spell-page__pos">{word.partOfSpeech}</span>
-        <button className="spell-page__speak" onClick={() => speak(word.word)}>🔊 Listen</button>
+        <button className="spell-page__speak" onClick={() => speak(word.word)}>🔊 听发音</button>
       </div>
 
       <div className="spell-page__input-area">
@@ -114,16 +114,16 @@ export default function SpellPage() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter' && input.trim()) check(); }}
-          placeholder="Type the English word..."
+          placeholder="输入英文单词..."
           autoFocus
           disabled={!!feedback}
         />
         {feedback && (
           <p className={`spell-feedback ${feedback === 'wrong' ? 'spell-feedback--wrong' : ''}`}>
-            {feedback === 'correct' ? '✅ Correct!' : `❌ The answer is: ${word.word}`}
+            {feedback === 'correct' ? '✅ 正确！' : `❌ 正确答案是: ${word.word}`}
           </p>
         )}
-        <button className="spell-check-btn" onClick={check} disabled={!input.trim() || !!feedback}>Check</button>
+        <button className="spell-check-btn" onClick={check} disabled={!input.trim() || !!feedback}>检查</button>
       </div>
     </div>
   );

@@ -13,15 +13,15 @@ export default function FavoritesPage() {
   return (
     <div className="fav-page animate-fadeIn">
       <div className="fav-page__header">
-        <button className="fav-page__back" onClick={() => navigate(-1)}>← Back</button>
-        <h2>❤️ Favorites</h2>
-        <span className="fav-page__count">{words.length} words</span>
+        <button className="fav-page__back" onClick={() => navigate(-1)}>← 返回</button>
+        <h2>❤️ 我的收藏</h2>
+        <span className="fav-page__count">{words.length} 词</span>
       </div>
 
       {words.length === 0 ? (
         <div className="fav-page__empty">
           <span>💔</span>
-          <p>No favorites yet. Tap the heart on any word card to save it here.</p>
+          <p>还没有收藏单词。浏览单词卡片时点击心形图标即可收藏。</p>
         </div>
       ) : (
         <div className="fav-page__grid">

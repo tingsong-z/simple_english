@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const tabs = [
-  { path: '/', icon: '🏠', label: 'Home' },
-  { path: '/browse', icon: '📚', label: 'Browse' },
-  { path: '/quiz', icon: '🎯', label: 'Quiz' },
-  { path: '/spell', icon: '✍️', label: 'Spell' },
-  { path: '/review', icon: '🔄', label: 'Review' },
+  { path: '/', icon: '🏠', label: '首页' },
+  { path: '/browse', icon: '📚', label: '浏览' },
+  { path: '/quiz', icon: '🎯', label: '测验' },
+  { path: '/spell', icon: '✍️', label: '拼写' },
+  { path: '/review', icon: '🔄', label: '复习' },
 ];
 
 export default function Navbar() {
